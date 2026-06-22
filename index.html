@@ -1,0 +1,32 @@
+---
+layout: default
+title: "TI×BI"
+---
+
+<section class="hero">
+  <p class="hero-eyebrow">Technological Intelligence × Biological Intelligence</p>
+  <h1 class="hero-headline">Two intelligences are colliding. One of them is you.</h1>
+  <p class="hero-sub">A weekly essay on what happens to human beings when the tools they built start outperforming them — and what to do about it.</p>
+  <a href="/blog.html" class="hero-cta">Read the essays →</a>
+  <div class="hero-divider"></div>
+</section>
+
+<section class="posts-section">
+  <p class="section-label">Recent Essays</p>
+  <div class="posts-grid">
+    {% assign recent = site.posts | limit: 3 %}
+    {% for post in recent %}
+    <article class="post-card">
+      <div class="post-card-meta">
+        <span>{{ post.date | date: "%b %-d, %Y" }}</span>
+        {% if post.reading_time %}<span class="read-time">{{ post.reading_time }} min</span>{% endif %}
+      </div>
+      <h2 class="post-card-title">
+        <a href="{{ post.url }}">{{ post.title }}</a>
+      </h2>
+      <p class="post-card-excerpt">{{ post.excerpt | strip_html | truncate: 140 }}</p>
+      <a href="{{ post.url }}" class="post-card-link">Read →</a>
+    </article>
+    {% endfor %}
+  </div>
+</section>

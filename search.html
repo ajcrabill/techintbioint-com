@@ -1,0 +1,71 @@
+---
+layout: default
+title: "Search"
+---
+
+<header class="page-header">
+  <h1>Search</h1>
+  <p>Find essays by keyword.</p>
+</header>
+
+<div class="search-section">
+  <div class="search-wrap">
+    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>
+    <input type="search" id="search-input" class="search-input" placeholder="Search essays…" aria-label="Search essays" autocomplete="off" />
+  </div>
+</div>
+
+<div class="search-results">
+  <p class="search-meta" id="search-meta"></p>
+  <div class="search-grid" id="search-grid"></div>
+</div>
+
+<script>
+var posts = [
+  {% for post in site.posts %}
+  {
+    title: {{ post.title | jsonify }},
+    url: {{ post.url | jsonify }},
+    date: {{ post.date | date: "%B %-d, %Y" | jsonify }},
+    excerpt: {{ post.excerpt | strip_html | truncate: 200 | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+];
+
+var input = document.getElementById('search-input');
+var grid = document.getElementById('search-grid');
+var meta = document.getElementById('search-meta');
+
+function render() {
+  var q = input.value.trim().toLowerCase();
+  var filtered = q
+    ? posts.filter(function(p) {
+        return p.title.toLowerCase().includes(q) || p.excerpt.toLowerCase().includes(q);
+      })
+    : posts;
+
+  meta.textContent = 'Showing ' + filtered.length + ' of ' + posts.length + ' essays';
+  grid.innerHTML = '';
+
+  if (!filtered.length) {
+    grid.innerHTML = '<div class="no-results"><h3>No essays matched.</h3><p>Try different keywords.</p></div>';
+    return;
+  }
+
+  filtered.forEach(function(p) {
+    var card = document.createElement('a');
+    card.href = p.url;
+    card.className = 'search-card';
+    card.innerHTML =
+      '<div class="search-card-date">' + p.date + '</div>' +
+      '<div class="search-card-title">' + p.title + '</div>' +
+      '<div class="search-card-excerpt">' + p.excerpt + '</div>';
+    grid.appendChild(card);
+  });
+}
+
+input.addEventListener('input', render);
+render();
+</script>

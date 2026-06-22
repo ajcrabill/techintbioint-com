@@ -1,0 +1,29 @@
+---
+layout: default
+---
+<article>
+  <header class="post-header">
+    <div class="post-header-inner">
+      <p class="post-kicker">Essay</p>
+      <h1 class="post-title">{{ page.title }}</h1>
+      <div class="post-byline">
+        <span>{{ page.author | default: site.author }}</span>
+        <span class="post-byline-sep">·</span>
+        <span>{{ page.date | date: "%B %-d, %Y" }}</span>
+        {% if page.reading_time %}
+        <span class="post-byline-sep">·</span>
+        <span>{{ page.reading_time }} min read</span>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+
+  <div class="post-body">
+    {{ content }}
+  </div>
+
+  <div class="post-footer">
+    <span class="post-footer-label">TI×BI · Published weekly by AJ Crabill</span>
+    <a href="/blog.html" class="post-nav-link">← All essays</a>
+  </div>
+</article>
