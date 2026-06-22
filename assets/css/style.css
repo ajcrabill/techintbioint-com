@@ -25,27 +25,9 @@
   --nav-h:    60px;
 }
 
-/* ─── Textures ───────────────────────────────────────────── */
-/* Brushed-steel background used on nav, headers, footer */
-.steel-bg {
-  background-color: var(--steel-deep);
-  background-image:
-    repeating-linear-gradient(
-      90deg,
-      rgba(255,255,255,0)    0px,
-      rgba(255,255,255,0)    2px,
-      rgba(255,255,255,0.03) 2px,
-      rgba(255,255,255,0.03) 3px
-    ),
-    repeating-linear-gradient(
-      0deg,
-      rgba(0,0,0,0)    0px,
-      rgba(0,0,0,0)    12px,
-      rgba(0,0,0,0.05) 12px,
-      rgba(0,0,0,0.05) 13px
-    ),
-    linear-gradient(180deg, #232F38 0%, var(--steel-deep) 100%);
-}
+/* ─── Shared image texture helpers ───────────────────────── */
+/* Steel image: used as background-image on nav, headers, footer */
+/* Skin image:  used on hero (combined with steel in hero-collision) */
 
 /* ─── Reset ─────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -74,17 +56,10 @@ button { cursor: pointer; font: inherit; border: none; background: none; }
   display: flex;
   align-items: center;
   padding: 0 2rem;
-  /* brushed steel */
   background-color: var(--steel-deep);
-  background-image:
-    repeating-linear-gradient(
-      90deg,
-      rgba(255,255,255,0)    0px,
-      rgba(255,255,255,0)    2px,
-      rgba(255,255,255,0.03) 2px,
-      rgba(255,255,255,0.03) 3px
-    ),
-    linear-gradient(180deg, #232F38 0%, #141D22 100%);
+  background-image: url('/assets/images/steel-texture.svg');
+  background-size: cover;
+  background-position: center top;
   border-bottom: 1px solid rgba(168,192,204,0.12);
 }
 
@@ -133,23 +108,10 @@ button { cursor: pointer; font: inherit; border: none; background: none; }
 .hero {
   padding: 5rem 2rem 4rem;
   text-align: center;
-  /* skin (warm brown) collides with steel from left to right */
   background-color: var(--steel-deep);
-  background-image:
-    repeating-linear-gradient(
-      90deg,
-      rgba(255,255,255,0)    0px,
-      rgba(255,255,255,0)    2px,
-      rgba(255,255,255,0.02) 2px,
-      rgba(255,255,255,0.02) 3px
-    ),
-    linear-gradient(
-      118deg,
-      #7A3D1A 0%,
-      #B87040 22%,
-      #2A3A45 52%,
-      #141D22 100%
-    );
+  background-image: url('/assets/images/hero-collision.svg');
+  background-size: cover;
+  background-position: center;
 }
 
 .hero-eyebrow {
@@ -332,24 +294,10 @@ button { cursor: pointer; font: inherit; border: none; background: none; }
 /* ─── Post layout ────────────────────────────────────────── */
 .post-header {
   padding: 4rem 2rem 3rem;
-  /* brushed steel header */
   background-color: var(--steel-deep);
-  background-image:
-    repeating-linear-gradient(
-      90deg,
-      rgba(255,255,255,0)    0px,
-      rgba(255,255,255,0)    2px,
-      rgba(255,255,255,0.03) 2px,
-      rgba(255,255,255,0.03) 3px
-    ),
-    repeating-linear-gradient(
-      0deg,
-      rgba(0,0,0,0)    0px,
-      rgba(0,0,0,0)    10px,
-      rgba(0,0,0,0.06) 10px,
-      rgba(0,0,0,0.06) 11px
-    ),
-    linear-gradient(160deg, #2A3A45 0%, #141D22 60%, #0E1518 100%);
+  background-image: url('/assets/images/steel-texture.svg');
+  background-size: cover;
+  background-position: center;
   border-bottom: 2px solid var(--skin-mid);
 }
 
@@ -461,15 +409,9 @@ button { cursor: pointer; font: inherit; border: none; background: none; }
   padding: 3.5rem 2rem;
   text-align: center;
   background-color: var(--steel-deep);
-  background-image:
-    repeating-linear-gradient(
-      90deg,
-      rgba(255,255,255,0)    0px,
-      rgba(255,255,255,0)    2px,
-      rgba(255,255,255,0.03) 2px,
-      rgba(255,255,255,0.03) 3px
-    ),
-    linear-gradient(160deg, #2A3A45 0%, #141D22 100%);
+  background-image: url('/assets/images/steel-texture.svg');
+  background-size: cover;
+  background-position: center;
   border-bottom: 2px solid var(--skin-mid);
 }
 
@@ -686,17 +628,10 @@ button { cursor: pointer; font: inherit; border: none; background: none; }
 /* ─── Footer ─────────────────────────────────────────────── */
 .site-footer {
   padding: 2.5rem 2rem;
-  /* brushed steel footer */
   background-color: var(--steel-deep);
-  background-image:
-    repeating-linear-gradient(
-      90deg,
-      rgba(255,255,255,0)    0px,
-      rgba(255,255,255,0)    2px,
-      rgba(255,255,255,0.025) 2px,
-      rgba(255,255,255,0.025) 3px
-    ),
-    linear-gradient(180deg, #141D22 0%, #0E1518 100%);
+  background-image: url('/assets/images/steel-texture.svg');
+  background-size: cover;
+  background-position: center bottom;
   border-top: 1px solid rgba(168,192,204,0.1);
 }
 

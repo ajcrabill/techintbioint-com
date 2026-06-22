@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 600" width="1400" height="600">
+  <defs>
+    <!-- Warm brown base: richer in the center, darker at the edges -->
+    <radialGradient id="skBase" cx="50%" cy="45%" r="65%">
+      <stop offset="0%"   stop-color="#C89060"/>
+      <stop offset="55%"  stop-color="#A06838"/>
+      <stop offset="100%" stop-color="#6B3A18"/>
+    </radialGradient>
+
+    <!--
+      Skin texture filter.
+      fractalNoise at baseFrequency="0.08" with 8 octaves creates the
+      characteristic multi-scale organic grain of skin — coarse topology
+      at low frequencies, fine pore-level detail at high frequencies.
+      The feColorMatrix maps the gray noise into the warm brown palette
+      of melanated skin. feBlend multiply darkens the base where the
+      noise is dark, creating pore-like depressions. feDiffuseLighting
+      adds subtle surface relief — makes the texture look three-dimensional.
+    -->
+    <filter id="skinFilter" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise"
+                    baseFrequency="0.078"
+                    numOctaves="8"
+                    seed="3"
+                    result="noise"/>
+
+      <!-- Map noise to warm brown skin tones -->
+      <feColorMatrix type="matrix"
+        values="0.52 0.22 0.02 0 0.36
+                0.26 0.16 0.04 0 0.16
+                0.06 0.06 0.02 0 0.04
+                0    0    0    1 0"
+        in="noise" result="skinTone"/>
+
+      <!-- Multiply: noise pattern darkens the warm base color -->
+      <!-- Creates pore-like variation — darker spots, lighter ridges -->
+      <feBlend in="SourceGraphic" in2="skinTone" mode="multiply" result="pored"/>
+
+      <!-- Second noise pass at smaller scale for fine surface grain -->
+      <feTurbulence type="fractalNoise"
+                    baseFrequency="0.22"
+                    numOctaves="4"
+                    seed="9"
+                    result="fineNoise"/>
+
+      <!-- Diffuse light using the fine noise as bump map -->
+      <!-- Warm golden light from upper-left, simulating raking light -->
+      <feDiffuseLighting in="fineNoise"
+                         diffuseConstant="0.6"
+                         surfaceScale="5"
+                         lighting-color="#E8B880"
+                         result="diffuse">
+        <feDistantLight azimuth="145" elevation="35"/>
+      </feDiffuseLighting>
+
+      <!-- Overlay: adds the surface relief highlights/shadows -->
+      <feBlend in="pored" in2="diffuse" mode="overlay"/>
+    </filter>
+
+    <!-- Vignette: deeper warm darkness at edges -->
+    <radialGradient id="skVig" cx="50%" cy="45%" r="65%">
+      <stop offset="0%"   stop-color="rgba(0,0,0,0)"/>
+      <stop offset="100%" stop-color="rgba(60,15,5,0.5)"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Base warm brown -->
+  <rect width="1400" height="600" fill="url(#skBase)" filter="url(#skinFilter)"/>
+
+  <!-- Edge vignette -->
+  <rect width="1400" height="600" fill="url(#skVig)"/>
+</svg>

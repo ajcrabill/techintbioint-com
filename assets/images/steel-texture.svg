@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 600" width="1400" height="600">
+  <defs>
+    <!-- Base gradient: lighter steel tone in upper-center, dark at edges -->
+    <linearGradient id="stBase" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#4A6070"/>
+      <stop offset="45%"  stop-color="#2E3F50"/>
+      <stop offset="100%" stop-color="#141D22"/>
+    </linearGradient>
+
+    <!--
+      Brushed-metal filter.
+      Key: baseFrequency="0.004 0.88" — very low X, very high Y frequency.
+      This creates extremely long, thin horizontal streaks in the noise field,
+      exactly replicating the directional grain of a brushed-metal surface.
+      feSpecularLighting with feDistantLight at azimuth=5, elevation=10
+      (nearly horizontal light from the right side) grazes across the
+      horizontal ridges, producing bright metallic specular highlights.
+    -->
+    <filter id="brushed" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise"
+                    baseFrequency="0.004 0.88"
+                    numOctaves="5"
+                    seed="17"
+                    result="grain"/>
+
+      <!-- Primary specular highlight: sharp, bright, metallic -->
+      <feSpecularLighting in="grain"
+                          specularConstant="3.2"
+                          specularExponent="65"
+                          lighting-color="#C8E4F2"
+                          result="spec1">
+        <feDistantLight azimuth="5" elevation="9"/>
+      </feSpecularLighting>
+
+      <!-- Secondary diffuse layer: broad tonal variation across the surface -->
+      <feDiffuseLighting in="grain"
+                         diffuseConstant="1.2"
+                         surfaceScale="4"
+                         lighting-color="#6A8FA8"
+                         result="diff">
+        <feDistantLight azimuth="270" elevation="55"/>
+      </feDiffuseLighting>
+
+      <!-- Multiply diffuse over source to create tonal depth -->
+      <feBlend in="SourceGraphic" in2="diff" mode="multiply" result="toned"/>
+
+      <!-- Screen specular highlights over the toned base -->
+      <feBlend in="toned" in2="spec1" mode="screen"/>
+    </filter>
+
+    <!-- Vignette: darkens edges, focuses attention to center -->
+    <radialGradient id="stVig" cx="50%" cy="40%" r="68%">
+      <stop offset="0%"   stop-color="rgba(0,0,0,0)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0.55)"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Base steel color -->
+  <rect width="1400" height="600" fill="url(#stBase)" filter="url(#brushed)"/>
+
+  <!-- Edge vignette -->
+  <rect width="1400" height="600" fill="url(#stVig)"/>
+</svg>

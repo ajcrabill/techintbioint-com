@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 700" width="1400" height="700">
+  <defs>
+
+    <!-- ═══ SKIN SIDE (left) ═══════════════════════════════════ -->
+    <radialGradient id="skBase" cx="30%" cy="45%" r="70%">
+      <stop offset="0%"   stop-color="#C89060"/>
+      <stop offset="60%"  stop-color="#9A6030"/>
+      <stop offset="100%" stop-color="#5C2A0A"/>
+    </radialGradient>
+
+    <filter id="skinF" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.078" numOctaves="8" seed="3" result="noise"/>
+      <feColorMatrix type="matrix"
+        values="0.52 0.22 0.02 0 0.36
+                0.26 0.16 0.04 0 0.16
+                0.06 0.06 0.02 0 0.04
+                0    0    0    1 0"
+        in="noise" result="skinTone"/>
+      <feBlend in="SourceGraphic" in2="skinTone" mode="multiply" result="pored"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.22" numOctaves="4" seed="9" result="fine"/>
+      <feDiffuseLighting in="fine" diffuseConstant="0.6" surfaceScale="5" lighting-color="#E8B880" result="dif">
+        <feDistantLight azimuth="145" elevation="35"/>
+      </feDiffuseLighting>
+      <feBlend in="pored" in2="dif" mode="overlay"/>
+    </filter>
+
+    <!-- Clip: left portion + diagonal edge -->
+    <clipPath id="skinClip">
+      <polygon points="0,0  780,0  620,700  0,700"/>
+    </clipPath>
+
+
+    <!-- ═══ STEEL SIDE (right) ════════════════════════════════ -->
+    <linearGradient id="stBase" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#4A6070"/>
+      <stop offset="50%"  stop-color="#2E3F50"/>
+      <stop offset="100%" stop-color="#141D22"/>
+    </linearGradient>
+
+    <filter id="steelF" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.004 0.88" numOctaves="5" seed="17" result="grain"/>
+      <feSpecularLighting in="grain" specularConstant="3.2" specularExponent="65"
+                          lighting-color="#C8E4F2" result="spec">
+        <feDistantLight azimuth="5" elevation="9"/>
+      </feSpecularLighting>
+      <feDiffuseLighting in="grain" diffuseConstant="1.2" surfaceScale="4"
+                         lighting-color="#6A8FA8" result="diff">
+        <feDistantLight azimuth="270" elevation="55"/>
+      </feDiffuseLighting>
+      <feBlend in="SourceGraphic" in2="diff" mode="multiply" result="toned"/>
+      <feBlend in="toned" in2="spec" mode="screen"/>
+    </filter>
+
+    <!-- Clip: right portion + diagonal edge -->
+    <clipPath id="steelClip">
+      <polygon points="780,0  1400,0  1400,700  620,700"/>
+    </clipPath>
+
+
+    <!-- ═══ COLLISION SEAM ════════════════════════════════════ -->
+    <!-- Copper/bronze glow where the two materials meet -->
+    <linearGradient id="seamGlow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="rgba(184,112,58,0)"/>
+      <stop offset="45%"  stop-color="rgba(184,112,58,0)"/>
+      <stop offset="50%"  stop-color="rgba(200,130,70,0.55)"/>
+      <stop offset="55%"  stop-color="rgba(184,112,58,0)"/>
+      <stop offset="100%" stop-color="rgba(184,112,58,0)"/>
+    </linearGradient>
+
+
+    <!-- ═══ VIGNETTE (text legibility) ════════════════════════ -->
+    <radialGradient id="vig" cx="50%" cy="38%" r="72%">
+      <stop offset="0%"   stop-color="rgba(0,0,0,0.1)"/>
+      <stop offset="80%"  stop-color="rgba(0,0,0,0.50)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0.78)"/>
+    </radialGradient>
+
+  </defs>
+
+  <!-- Dark base layer (visible at seam gap if any) -->
+  <rect width="1400" height="700" fill="#0A1216"/>
+
+  <!-- Skin texture — left side -->
+  <rect width="1400" height="700" fill="url(#skBase)"
+        filter="url(#skinF)" clip-path="url(#skinClip)"/>
+
+  <!-- Steel texture — right side -->
+  <rect width="1400" height="700" fill="url(#stBase)"
+        filter="url(#steelF)" clip-path="url(#steelClip)"/>
+
+  <!-- Copper seam glow at the collision line -->
+  <rect width="1400" height="700" fill="url(#seamGlow)"/>
+
+  <!-- Dark vignette so white text is always legible -->
+  <rect width="1400" height="700" fill="url(#vig)"/>
+
+</svg>
