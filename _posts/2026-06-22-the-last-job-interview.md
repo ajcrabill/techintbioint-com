@@ -2,7 +2,7 @@
 layout: post
 title: "The Last Job Interview"
 date: 2026-06-22
-author: AJ Crabill
+author: airick journey crabill
 reading_time: 5
 excerpt: "The job interview tests for the cognitive skills that technological intelligence is absorbing, while failing to test for the skills that actually matter now that the bottleneck has shifted."
 ---

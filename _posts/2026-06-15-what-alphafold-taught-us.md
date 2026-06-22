@@ -2,7 +2,7 @@
 layout: post
 title: "What AlphaFold Actually Taught Us"
 date: 2026-06-15
-author: AJ Crabill
+author: airick journey crabill
 reading_time: 5
 excerpt: "AlphaFold is not a story about what technological intelligence can do -- it is a precise template for how a threshold crossing works, what it does to the economics of a field, and what it demands of the people inside it."
 ---

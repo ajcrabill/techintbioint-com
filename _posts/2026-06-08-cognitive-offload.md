@@ -2,7 +2,7 @@
 layout: post
 title: "The Cognitive Offload You're Not Tracking"
 date: 2026-06-08
-author: AJ Crabill
+author: airick journey crabill
 reading_time: 5
 excerpt: "The debate about screen time is a debate about a container — the actual debate, the one we haven't had, is about which cognitive functions biological intelligence is externalizing to technological intelligence, at what depth, and with what consequences for human development."
 ---

@@ -2,7 +2,7 @@
 layout: post
 title: "We've Been Playing the Wrong Game"
 date: 2026-06-01
-author: AJ Crabill
+author: airick journey crabill
 reading_time: 5
 excerpt: "The institutions built around survival priority were rational responses to genuine scarcity — the premise is now expiring, and the institutions haven't noticed."
 ---

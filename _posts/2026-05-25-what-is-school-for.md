@@ -2,7 +2,7 @@
 layout: post
 title: "What Is School Actually For?"
 date: 2026-05-25
-author: AJ Crabill
+author: airick journey crabill
 reading_time: 5
 excerpt: "The school design question has always been a question about what kind of humans we are trying to produce — and for 150 years, the honest answer was: sortable workers, because the industrial economy required them and technological intelligence hadn't yet made that answer obsolete."
 ---
