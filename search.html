@@ -5,7 +5,7 @@ title: "Search"
 
 <header class="page-header">
   <h1>Search</h1>
-  <p>Find essays by keyword.</p>
+  <p>Find posts by keyword.</p>
 </header>
 
 <div class="search-section">
@@ -13,7 +13,7 @@ title: "Search"
     <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
       <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
     </svg>
-    <input type="search" id="search-input" class="search-input" placeholder="Search essays…" aria-label="Search essays" autocomplete="off" />
+    <input type="search" id="search-input" class="search-input" placeholder="Search posts…" aria-label="Search posts" autocomplete="off" />
   </div>
 </div>
 
@@ -46,11 +46,11 @@ function render() {
       })
     : posts;
 
-  meta.textContent = 'Showing ' + filtered.length + ' of ' + posts.length + ' essays';
+  meta.textContent = 'Showing the posts';
   grid.innerHTML = '';
 
   if (!filtered.length) {
-    grid.innerHTML = '<div class="no-results"><h3>No essays matched.</h3><p>Try different keywords.</p></div>';
+    grid.innerHTML = '<div class="no-results"><h3>No posts matched.</h3><p>Try different keywords.</p></div>';
     return;
   }
 
