@@ -56,11 +56,8 @@ button { cursor: pointer; font: inherit; border: none; background: none; }
   display: flex;
   align-items: center;
   padding: 0 2rem;
-  background-color: var(--steel-deep);
-  background-image: url('/assets/images/steel-texture.png');
-  background-size: cover;
-  background-position: center top;
-  border-bottom: 1px solid rgba(168,192,204,0.12);
+  background-color: #0d1518;
+  border-bottom: 1px solid rgba(168,192,204,0.15);
 }
 
 .nav-inner {
@@ -125,9 +122,9 @@ button { cursor: pointer; font: inherit; border: none; background: none; }
   background-image: url('/assets/images/skin-texture.png');
   background-size: cover;
   background-position: left center;
-  /* diagonal clip: skin visible left, fades into steel toward center */
-  -webkit-mask-image: linear-gradient(118deg, black 0%, black 32%, transparent 58%);
-  mask-image: linear-gradient(118deg, black 0%, black 32%, transparent 58%);
+  /* diagonal clip: skin visible left, bleed centered ~50% */
+  -webkit-mask-image: linear-gradient(118deg, black 0%, black 48%, transparent 72%);
+  mask-image: linear-gradient(118deg, black 0%, black 48%, transparent 72%);
   z-index: 0;
 }
 
@@ -138,9 +135,9 @@ button { cursor: pointer; font: inherit; border: none; background: none; }
   inset: 0;
   background: linear-gradient(
     118deg,
-    transparent 36%,
-    rgba(184,112,58,0.45) 43%,
-    transparent 50%
+    transparent 50%,
+    rgba(184,112,58,0.45) 58%,
+    transparent 66%
   );
   z-index: 0;
 }
