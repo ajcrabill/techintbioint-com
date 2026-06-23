@@ -685,6 +685,7 @@ button { cursor: pointer; font: inherit; border: none; background: none; }
   background-image: url('/assets/images/skin-texture.png');
   background-size: cover;
   background-position: left center;
+  filter: hue-rotate(-14deg) saturate(0.68) brightness(0.78);
   -webkit-mask-image: linear-gradient(118deg, black 0%, black 40%, transparent 64%);
   mask-image: linear-gradient(118deg, black 0%, black 40%, transparent 64%);
   z-index: 0;
