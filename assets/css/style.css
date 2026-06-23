@@ -123,8 +123,8 @@ button { cursor: pointer; font: inherit; border: none; background: none; }
   background-size: cover;
   background-position: left center;
   /* diagonal clip: skin visible left, bleed centered ~50% */
-  -webkit-mask-image: linear-gradient(118deg, black 0%, black 48%, transparent 72%);
-  mask-image: linear-gradient(118deg, black 0%, black 48%, transparent 72%);
+  -webkit-mask-image: linear-gradient(118deg, black 0%, black 40%, transparent 64%);
+  mask-image: linear-gradient(118deg, black 0%, black 40%, transparent 64%);
   z-index: 0;
 }
 
@@ -135,9 +135,9 @@ button { cursor: pointer; font: inherit; border: none; background: none; }
   inset: 0;
   background: linear-gradient(
     118deg,
-    transparent 50%,
-    rgba(184,112,58,0.45) 58%,
-    transparent 66%
+    transparent 42%,
+    rgba(184,112,58,0.45) 50%,
+    transparent 58%
   );
   z-index: 0;
 }
