@@ -334,6 +334,8 @@ button { cursor: pointer; font: inherit; border: none; background: none; }
 
 /* ─── Post layout ────────────────────────────────────────── */
 .post-header {
+  position: relative;
+  overflow: hidden;
   padding: 4rem 2rem 3rem;
   background-color: var(--steel-deep);
   background-image: url('/assets/images/steel-texture.png');
@@ -341,6 +343,36 @@ button { cursor: pointer; font: inherit; border: none; background: none; }
   background-position: center;
   border-bottom: 2px solid var(--skin-mid);
 }
+
+.post-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/assets/images/skin-texture.png');
+  background-size: cover;
+  background-position: left center;
+  filter: hue-rotate(-14deg) saturate(0.68) brightness(0.78);
+  -webkit-mask-image: linear-gradient(118deg, black 0%, black 40%, transparent 64%);
+  mask-image: linear-gradient(118deg, black 0%, black 40%, transparent 64%);
+  z-index: 0;
+}
+
+.post-header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(118deg, transparent 42%, rgba(184,112,58,0.45) 50%, transparent 58%);
+  z-index: 0;
+}
+
+.post-header-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(ellipse at 50% 40%, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.55) 100%);
+}
+
+.post-header > * { position: relative; z-index: 1; }
 
 .post-header-inner {
   max-width: var(--max-w);
@@ -447,6 +479,8 @@ button { cursor: pointer; font: inherit; border: none; background: none; }
 
 /* ─── Page header ────────────────────────────────────────── */
 .page-header {
+  position: relative;
+  overflow: hidden;
   padding: 3.5rem 2rem;
   text-align: center;
   background-color: var(--steel-deep);
@@ -455,6 +489,36 @@ button { cursor: pointer; font: inherit; border: none; background: none; }
   background-position: center;
   border-bottom: 2px solid var(--skin-mid);
 }
+
+.page-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/assets/images/skin-texture.png');
+  background-size: cover;
+  background-position: left center;
+  filter: hue-rotate(-14deg) saturate(0.68) brightness(0.78);
+  -webkit-mask-image: linear-gradient(118deg, black 0%, black 40%, transparent 64%);
+  mask-image: linear-gradient(118deg, black 0%, black 40%, transparent 64%);
+  z-index: 0;
+}
+
+.page-header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(118deg, transparent 42%, rgba(184,112,58,0.45) 50%, transparent 58%);
+  z-index: 0;
+}
+
+.page-header-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(ellipse at 50% 40%, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.55) 100%);
+}
+
+.page-header > * { position: relative; z-index: 1; }
 
 .page-header h1 {
   font-size: clamp(1.8rem, 4vw, 2.6rem);
