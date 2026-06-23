@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "What Is School Actually For?"
+title: "Why Do Schools Exist?"
 date: 2026-05-25
 author: airick journey crabill
 reading_time: 5
